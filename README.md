@@ -6,5 +6,5 @@ la aplicacion sera para el backend en laravel y para el frontend en flutter
 xd
 =======
 la aplicacion sera para el backend en laravel y para el frontend en flutter. 
->>>>>>> 53992d099b7483eeb468bb28cf5512fd61f355c4
 esto comentario para mi rama modificaciones : brrrr anuel
+otro comentario de la rama de modificaciones : brrr anuel 2
