@@ -9,13 +9,11 @@ import 'package:traductor/services/services.dart';
 
 class AuthService extends ChangeNotifier {
   bool _estaLogueado = false;
-  bool _tokenIncache = false;
   User? _user;
   String? _tokens;
   Servidor server = Servidor();
   final _storage = const FlutterSecureStorage();
   bool get autenticated => _estaLogueado;
-  bool get estaEnCache => _tokenIncache;
   User get user => _user!;
 
   Future<String> login(String email, String password, String devicename) async {
@@ -48,11 +46,9 @@ class AuthService extends ChangeNotifier {
       final response =await http.get(Uri.parse('${server.baseUrl}/user'),
       headers: {'authorization':'Bearer $token'}
       );
-       _estaLogueado=true;      
       _user=User.fromJson(jsonDecode(response.body));
+      _estaLogueado=true;      
       _tokens=token;
-       storeToken(token);
-       _tokenIncache=true;
       notifyListeners();
     } catch (e) {
       print(e);
@@ -68,7 +64,6 @@ class AuthService extends ChangeNotifier {
     _estaLogueado=false;
     _tokens=null;
     await _storage.delete(key: 'token');
-    _tokenIncache=false;
     //cache del telefono
   }
   void logout() async {

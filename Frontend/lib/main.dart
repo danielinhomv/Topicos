@@ -22,7 +22,8 @@ class _AppStateState extends State<AppState> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => Loginfomprovider(),),
-        ChangeNotifierProvider(create: (_) => AuthService())
+        ChangeNotifierProvider(create: (_) => AuthService()),
+        ChangeNotifierProvider(create: (_) => CuentaService()),
         // Agrega más providers según tus necesidades
       ],
       child: MaterialApp(
@@ -33,6 +34,7 @@ class _AppStateState extends State<AppState> {
           '/': (_) => const HomeScreen(),
           'splash': (_) => const SplashScreeen(),
           'login': (_) => const LoginScreen(),
+          'cuenta':(_) => const CuentaScreen(),
         },
         theme: ThemeData.light().copyWith(
           scaffoldBackgroundColor: Colors.grey[100],
